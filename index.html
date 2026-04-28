@@ -589,7 +589,15 @@ nav.scrolled {
 .contact-inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
 }
-.contact-links { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.contact-links { 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 32px;
+}
+@media (max-width: 600px) {
+  .contact-links { grid-template-columns: 1fr; }
+}
 .contact-link-item {
   display: flex; align-items: center; gap: 16px;
   padding: 16px 20px; border-radius: var(--radius);
@@ -642,26 +650,124 @@ footer {
 .fade-up.visible { opacity: 1; transform: none; }
 
 /* ─── MOBILE ─────────────────────────────────────── */
+/* ─── TABLET (max 900px) ─────────────────────────── */
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .cert-grid { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 700px) {
-  .section { padding: 80px 0; }
+
+/* ─── MOBILE (max 600px) ─────────────────────────── */
+@media (max-width: 600px) {
+
+  /* spacing */
+  :root { --nav-h: 60px; }
+  .section { padding: 60px 0; }
+  .section-sm { padding: 48px 0; }
+  .container { padding: 0 16px; }
+
+  /* nav */
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .detail-highlights { grid-template-columns: 1fr; }
-  .detail-panel { max-height: 96vh; }
-  .detail-body { padding: 20px; }
+  .nav-logo { font-size: 1rem; }
+  .nav-logo-badge { width: 28px; height: 28px; font-size: 0.6rem; }
+
+  /* hero */
+  #hero { min-height: 100svh; padding-top: var(--nav-h); }
+  .hero-name { font-size: 2.4rem; line-height: 1.1; }
+  .hero-eyebrow { font-size: 0.7rem; margin-bottom: 16px; }
+  .hero-roles { gap: 8px; margin-bottom: 20px; }
+  .role-pill { font-size: 0.72rem; padding: 3px 10px; }
+  .hero-bio { font-size: 0.9rem; margin-bottom: 28px; }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-actions .btn { justify-content: center; width: 100%; padding: 13px 20px; font-size: 0.95rem; }
+  .scroll-hint { display: none; }
+
+  /* section headings */
+  .section-title { font-size: 1.9rem; }
+  .section-kicker { font-size: 0.7rem; }
+  .section-sub { font-size: 0.875rem; }
+  .section-header { margin-bottom: 36px; }
+
+  /* about photo — stack vertically, centered */
+  .about-text > div[style] {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+  .about-photo-wrap { width: 140px; margin: 0 auto 20px; }
+  .about-photo { width: 140px; height: 155px; }
+  .about-text p { font-size: 0.88rem; line-height: 1.7; }
+  .about-links { justify-content: center; }
+  .about-links .btn { font-size: 0.82rem; padding: 9px 16px; }
+
+  /* skills */
+  .skill-group-label { font-size: 0.68rem; }
+  .skill-pill { font-size: 0.75rem; padding: 5px 11px; }
+  .skills-block { gap: 20px; }
+
+  /* project tabs — scrollable row */
+  .projects-tabs {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 10px;
+    gap: 2px;
+    margin-bottom: 32px;
+  }
+  .projects-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn { font-size: 0.8rem; padding: 7px 16px; white-space: nowrap; }
+
+  /* project cards */
+  .projects-grid { grid-template-columns: 1fr; gap: 16px; }
+  .card-thumbnail { height: 150px; }
+  .card-body { padding: 18px; }
+  .card-title { font-size: 1.15rem; }
+  .card-desc { font-size: 0.83rem; }
+  .card-footer { padding: 12px 18px; }
+  .card-tech { margin-top: 14px; padding-top: 14px; }
+  .tech-tag { font-size: 0.68rem; padding: 2px 8px; }
+
+  /* detail overlay */
+  .detail-overlay { padding: 12px; align-items: flex-end; }
+  .detail-panel {
+    max-height: 92vh;
+    border-radius: 20px 20px 16px 16px;
+  }
   .detail-header { padding: 20px 20px 0; }
-  .detail-thumb { margin: 16px 20px 0; height: 160px; }
-  .footer-inner { flex-direction: column; text-align: center; }
-  .hero-actions { flex-direction: column; }
-  .hero-actions .btn { justify-content: center; }
+  .detail-title { font-size: 1.5rem; }
+  .detail-thumb { margin: 16px 20px 0; height: 140px; }
+  .detail-body { padding: 20px; }
+  .detail-highlights { grid-template-columns: 1fr; gap: 6px; }
+  .detail-actions { flex-direction: column; gap: 10px; }
+  .detail-actions .btn { width: 100%; justify-content: center; }
+  .detail-section-label { margin-top: 20px; }
+
+  /* certifications */
+  .cert-grid { grid-template-columns: 1fr; gap: 10px; }
+  .cert-card { padding: 14px; gap: 12px; }
+  .cert-icon-wrap { width: 40px; height: 40px; border-radius: 10px; font-size: 1.2rem; }
+  .cert-title { font-size: 0.82rem; }
+  .cert-meta { font-size: 0.68rem; }
+  .cert-issuer { font-size: 0.65rem; }
+
+  /* contact */
+  .contact-link-item { padding: 13px 16px; gap: 12px; }
+  .contact-link-icon { width: 32px; height: 32px; font-size: 0.9rem; }
+  .contact-link-value { font-size: 0.82rem; }
+  .contact-form { gap: 12px; }
+  .form-input, .form-textarea { font-size: 0.9rem; padding: 11px 14px; }
+
+  /* footer */
+  .footer-inner { flex-direction: column; text-align: center; gap: 12px; }
+  .footer-copy { font-size: 0.78rem; }
+  .footer-links { justify-content: center; gap: 16px; }
+  .footer-links a { font-size: 0.78rem; }
 }
+
 
 /* Mobile nav drawer */
 .mobile-nav {
@@ -680,9 +786,89 @@ footer {
   transition: color 0.2s, background 0.2s;
 }
 .mobile-nav a:hover { color: var(--text); background: var(--bg3); }
+/* ─── PAGE INTRO ANIMATION ───────────────────────── */
+#page-loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 20px;
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+#page-loader.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px);
+}
+
+.loader-badge {
+  width: 64px; height: 64px; border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--sans); font-size: 1rem; font-weight: 700;
+  color: white; letter-spacing: 0.05em;
+  animation: loaderPulse 1.2s ease-in-out infinite;
+}
+@keyframes loaderPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,212,255,0.3); }
+  50% { transform: scale(1.06); box-shadow: 0 0 0 12px rgba(0,212,255,0); }
+}
+
+.loader-name {
+  font-family: var(--serif);
+  font-size: 1.5rem; color: var(--text);
+  letter-spacing: -0.01em;
+  animation: loaderFade 1s ease forwards;
+}
+.loader-name em { font-style: italic; color: var(--accent); }
+
+.loader-bar-wrap {
+  width: 160px; height: 2px;
+  background: var(--bg3); border-radius: 2px; overflow: hidden;
+}
+.loader-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  animation: loaderBar 1.6s var(--ease) forwards;
+}
+@keyframes loaderBar {
+  0%   { width: 0%; }
+  60%  { width: 85%; }
+  100% { width: 100%; }
+}
+@keyframes loaderFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* body hidden until loader done */
+body.loading { overflow: hidden; }
+
+/* content fade-in after loader */
+#main-content {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+#main-content.visible {
+  opacity: 1;
+  transform: none;
+}
 </style>
 </head>
-<body>
+<body class="loading">
+
+<!-- PAGE LOADER -->
+<div id="page-loader">
+  <div class="loader-badge">MNA</div>
+  <div class="loader-name">Mohammed <em>Nouman</em></div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
 
 <!-- NAV -->
 <nav id="nav">
@@ -974,7 +1160,7 @@ footer {
 <!-- CONTACT -->
 <section id="contact" class="section">
   <div class="container">
-    <div class="contact-inner">
+    <div class="contact-inner" style="grid-template-columns:1fr">
       <div class="fade-up">
         <div class="section-kicker">Get in touch</div>
         <h2 class="section-title">Let's <em>connect</em></h2>
@@ -1012,25 +1198,6 @@ footer {
           </a>
         </div>
       </div>
-      <div class="fade-up">
-        <div class="contact-form">
-          <div class="form-group">
-            <label class="form-label">Your name</label>
-            <input type="text" class="form-input" placeholder="Jane Smith" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email address</label>
-            <input type="email" class="form-input" placeholder="jane@company.com" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Hi Nouman, I saw your portfolio and..."></textarea>
-          </div>
-          <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="handleFormSubmit(this)">
-            Send Message →
-          </button>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -1053,6 +1220,8 @@ footer {
 <div class="detail-overlay" id="detailOverlay" onclick="closeDetail(event)">
   <div class="detail-panel" id="detailPanel"></div>
 </div>
+
+</div><!-- /main-content -->
 
 <script>
 // ─── DATA ─────────────────────────────────────────────────
@@ -1345,9 +1514,23 @@ function handleFormSubmit(btn) {
   }, 3000);
 }
 
+// ─── PAGE LOADER ──────────────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('page-loader');
+    const content = document.getElementById('main-content');
+    loader.classList.add('hide');
+    document.body.classList.remove('loading');
+    setTimeout(() => {
+      content.classList.add('visible');
+      loader.style.display = 'none';
+      observeFadeUps();
+    }, 600);
+  }, 1800);
+});
+
 // ─── INIT ─────────────────────────────────────────────────
 renderProjects('all');
-observeFadeUps();
 </script>
 </body>
 </html>
